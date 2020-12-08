@@ -19,7 +19,7 @@ app.use(bodyParder.json())
 
 // 跨域設定
 app.use(cors({
-  origin (origin, callback) {
+  origin(origin, callback) {
     // 如果是 Postman 之類的後端, 則允許
     if (origin === undefined) {
       callback(null, true)
@@ -56,9 +56,9 @@ const sessionSettings = {
 
 if (process.env.DEV === 'false') {
   // 如果不是本機的開發環境，允許不同網域的認證
-  sessionSettings.cokkie.sameSite = 'none'
+  sessionSettings.cookie.sameSite = 'none'
   // 如果是不同網域的認證，一定要設定 secure
-  sessionSettings.cokkie.secure = true
+  sessionSettings.cookie.secure = true
 }
 
 app.use(session(sessionSettings))
