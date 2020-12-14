@@ -55,9 +55,9 @@ export default {
       }
     },
     passwordState () {
-      if (this.account.length === 0) {
+      if (this.password.length === 0) {
         return null
-      } else if (this.account.length >= 4 && this.account.length <= 20) {
+      } else if (this.password.length >= 4 && this.password.length <= 20) {
         return true
       } else {
         return false
