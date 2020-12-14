@@ -14,7 +14,7 @@ import 'vue-img-inputer/dist/index.css'
 // PhotoSwipe
 import Photoswipe from 'vue-pswipe'
 // vue-analytics
-import VueAnalytics from 'vue-analytics'
+import VueGtag from 'vue-gtag'
 
 import App from './App.vue'
 import router from './router'
@@ -29,8 +29,10 @@ Vue.use(VueAxios, axios)
 Vue.use(VueSweetalert2)
 Vue.use(Photoswipe)
 Vue.component('ImgInputer', ImgInputer)
-Vue.use(VueAnalytics, {
-  id: process.env.VUE_APP_GA
+Vue.use(VueGtag, {
+  config: {
+    id: process.env.VUE_APP_GA
+  }
 })
 
 new Vue({
