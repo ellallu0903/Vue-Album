@@ -1,16 +1,21 @@
 <template lang="pug">
   div#app
-    b-navbar(toggleable='lg' type='dark' variant='danger')
-      b-container
-        b-navbar-brand(to='/') 線上相簿
-        b-navbar-toggle(target='nav-collapse')
-        b-collapse#nav-collapse(is-nav)
-          b-navbar-nav.ml-auto
-            b-nav-item(v-if="user.id.length === 0" to='/login') 登入
-            b-nav-item(v-if="user.id.length === 0" to='/reg') 註冊
-            b-nav-item(v-if="user.id.length > 0" to='/album') 我的相簿
-            b-nav-item(v-if="user.id.length > 0" @click="logout") 登出
+    b-navbar(toggleable='lg' type="dark" variant="dark")
+      b-navbar-brand(to='/')
+        div#logo.ml-3 ShareWo
+      b-navbar-toggle(target='nav-collapse')
+      b-collapse#nav-collapse(is-nav)
+        b-navbar-nav.ml-auto
+          b-nav-item.nav_item(v-if="user.id.length === 0" to='/reg') Sign up
+            span.ml-3.d-none.d-lg-inline-block |
+          b-nav-item.nav_item.mr-3(v-if="user.id.length === 0" to='/login') Log in
+          b-nav-item.nav_item(v-if="user.id.length > 0" :to="'share/' + user.id") My Wo
+            span.ml-3.d-none.d-lg-inline-block |
+          b-nav-item.nav_item(v-if="user.id.length > 0" to='/album') Manage
+            span.ml-3.d-none.d-lg-inline-block |
+          b-nav-item.nav_item.mr-3(v-if="user.id.length > 0" @click="logout") Log out
     router-view
+    footer#footer.text-center © 2021 All Rights Reserved
 </template>
 
 <script>
@@ -29,8 +34,8 @@ export default {
           if (res.data.success) {
             this.$swal({
               icon: 'success',
-              title: '成功',
-              text: '登出成功'
+              title: 'Success！',
+              text: 'Hope you come back soon'
             })
 
             // 清除 vuex
@@ -43,7 +48,7 @@ export default {
           } else {
             this.$swal({
               icon: 'error',
-              title: '錯誤',
+              title: 'Error !',
               text: res.data.message
             })
           }
@@ -52,7 +57,7 @@ export default {
           // 如果回來的狀態碼不是 200，直接 alert 錯誤訊息
           this.$swal({
             icon: 'error',
-            title: '錯誤',
+            title: 'Error !',
             text: error.response.data.message
           })
         })

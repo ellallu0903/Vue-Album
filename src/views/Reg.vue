@@ -1,38 +1,41 @@
 <template lang="pug">
-  #reg
-    b-container
-      b-row
-        b-col(cols="12").my-3
+  #reg.min_hight.flex_center
+    div#reg_box.form_size
+      b-row.w-100.p-4.p-lg-5
+        b-col(cols="12")
+          h1.text-center.font-weight-normal Sign up
           b-form(@submit.prevent="onSubmit" @reset="onReset")
             b-form-group#input-group-1(
-              label="帳號"
+              label="Account："
               label-for="input-1"
               :state="accountState"
-              description="帳號長度為 4 ~ 20 個字"
-              invalid-feedback="帳號格式不符"
+              description="Account length must be between 4 and 20 characters."
+              invalid-feedback="Invalid account !"
               )
               b-form-input#input-1(
                 v-model="account"
                 type="text"
-                required placeholder="請輸入帳號..."
+                required placeholder="please enter account . . ."
                 :state="accountState"
                 )
             b-form-group#input-group-2(
-              label="密碼"
+              label="Password："
               label-for="input-2"
               :state="passwordState"
-              description="密碼長度為 4 ~ 20 個字"
-              invalid-feedback="密碼格式不符"
+              description="Password length must be between 4 and 20 characters."
+              invalid-feedback="Invalid password !"
               )
               b-form-input#input-2(
                 v-model="password"
                 type="password"
-                required placeholder="請輸入密碼..."
+                required placeholder="please enter password . . ."
                 :state="passwordState"
                 )
-            div.text-center.my-5
-              b-btn.mx-1(variant="secondary" type="submit") 註冊
-              b-btn.mx-1(variant="danger" type="reset") 重置
+            div.text-center.mt-5
+              b-btn.w-100.mx-1.my-2(variant="secondary" type="submit") Submit
+              //- b-btn.mx-1(variant="danger" type="reset") 重置
+              hr
+              b-link(to="/login") Log in
 </template>
 
 <script>
@@ -73,15 +76,19 @@ export default {
         this.axios.post(process.env.VUE_APP_API + '/users/', this.$data)
           .then(res => {
             if (res.data.success) {
+              this.$store.state.sign.account = this.account
               this.$swal({
                 icon: 'success',
-                title: '註冊成功！',
-                text: '歡迎加入線上相簿'
+                title: 'Success！',
+                text: 'Welcome to join ShareWo'
+              }).then(() => {
+                // sweet alert 對話框關掉後才跳到相簿頁
+                this.$router.push('/login')
               })
             } else {
               this.$swal({
                 icon: 'error',
-                title: '發生錯誤',
+                title: 'Error !',
                 text: res.data.message
               })
             }
@@ -89,7 +96,7 @@ export default {
           .catch(err => {
             this.$swal({
               icon: 'error',
-              title: '發生錯誤',
+              title: 'Error !',
               text: err.response.data.message
             })
           })

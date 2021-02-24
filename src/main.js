@@ -15,6 +15,10 @@ import 'vue-img-inputer/dist/index.css'
 import Photoswipe from 'vue-pswipe'
 // vue-analytics
 import VueGtag from 'vue-gtag'
+// my_style
+import myStyle from '../src/assets/css/my_style.css'
+// bootstrap icon
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
 import App from './App.vue'
 import router from './router'
@@ -25,6 +29,9 @@ axios.defaults.withCredentials = true
 
 Vue.config.productionTip = false
 
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
+Vue.use(myStyle)
 Vue.use(VueAxios, axios)
 Vue.use(VueSweetalert2)
 Vue.use(Photoswipe)

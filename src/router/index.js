@@ -11,7 +11,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: '線上相簿',
+      title: 'ShareWo',
       login: false
     }
   },
@@ -20,7 +20,7 @@ const routes = [
     name: 'Reg',
     component: () => import(/* webpackChunkName: "reg" */ '../views/Reg.vue'),
     meta: {
-      title: '線上相簿 | 註冊',
+      title: 'ShareWo | Sign up',
       login: false
     }
   },
@@ -29,7 +29,7 @@ const routes = [
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
     meta: {
-      title: '線上相簿 | 登入',
+      title: 'ShareWo | Log in',
       login: false
     }
   },
@@ -37,6 +37,15 @@ const routes = [
     path: '/album',
     name: 'Album',
     component: () => import(/* webpackChunkName: "album" */ '../views/Album.vue'),
+    meta: {
+      title: 'ShareWo | Manage',
+      login: true
+    }
+  },
+  {
+    path: '/share/:id',
+    name: 'Share',
+    component: () => import(/* webpackChunkName: "share" */ '../views/Share.vue'),
     meta: {
       login: false
     }
@@ -58,8 +67,8 @@ router.beforeEach((to, from, next) => {
 // 如果是去相簿頁，就把 title 改成 '使用者的名稱' + 的相簿
 router.afterEach((to, from) => {
   let title = ''
-  if (to.name === 'Album') {
-    title = store.state.user.name + '的相簿'
+  if (to.name === 'Share') {
+    title = store.state.user.name + ' ❜s Wo'
   } else {
     title = to.meta.title
   }

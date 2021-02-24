@@ -9,6 +9,9 @@ export default new Vuex.Store({
     user: {
       name: '',
       id: ''
+    },
+    sign: {
+      account: ''
     }
   },
   mutations: {
@@ -19,11 +22,14 @@ export default new Vuex.Store({
     login (state, data) {
       state.user.name = data.account
       state.user.id = data._id
+    },
+    cleanAccount (state) {
+      state.sign.account = ''
     }
   },
   actions: {
   },
   modules: {
   },
-  plugins: [Persistedstate()]
+  plugins: [Persistedstate({ key: 'album' })]
 })
