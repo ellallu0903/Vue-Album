@@ -18,6 +18,7 @@
               img.img.img-responsive(:src="image.src" v-pswp="image")
               div.profile-content
                 div.profile-description {{ image.title }}
+    loading(:active.sync="isLoading" :can-cancel="true" background-color="black" loader="dots" height="70" width="70")
 </template>
 <script>
 export default {
@@ -26,7 +27,8 @@ export default {
       userId: this.$route.params.id,
       images: [],
       users: [],
-      url: 'https://ellallu0903.github.io/vue-shareWo/#/share/'
+      url: 'https://ellallu0903.github.io/vue-shareWo/#/share/',
+      isLoading: true
     }
   },
   methods: {
@@ -48,6 +50,7 @@ export default {
     this.axios.get(process.env.VUE_APP_API + '/albums/user/' + this.userId)
       .then(res => {
         if (res.data.success) {
+          this.isLoading = false
           // .map 把陣列的內容重新組合，再加上 edit & model
           this.images = res.data.result.map(image => {
             image.src = process.env.VUE_APP_API + '/albums/file/' + image.file

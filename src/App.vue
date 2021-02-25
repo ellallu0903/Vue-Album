@@ -9,7 +9,7 @@
           b-nav-item.nav_item(v-if="user.id.length === 0" to='/reg') Sign up
             span.ml-3.d-none.d-lg-inline-block |
           b-nav-item.nav_item.mr-3(v-if="user.id.length === 0" to='/login') Log in
-          b-nav-item.nav_item(v-if="user.id.length > 0" :to="'share/' + user.id") My Wo
+          b-nav-item.nav_item(v-if="user.id.length > 0" @click="toShare()") My Wo
             span.ml-3.d-none.d-lg-inline-block |
           b-nav-item.nav_item(v-if="user.id.length > 0" to='/album') Manage
             span.ml-3.d-none.d-lg-inline-block |
@@ -27,6 +27,11 @@ export default {
     }
   },
   methods: {
+    toShare () {
+      if (this.$route.path !== '/share/' + this.user.id) {
+        this.$router.push('/share/' + this.user.id)
+      }
+    },
     logout () {
       this.axios.delete(process.env.VUE_APP_API + '/users/logout')
         .then(res => {

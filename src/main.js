@@ -19,6 +19,9 @@ import VueGtag from 'vue-gtag'
 import myStyle from '../src/assets/css/my_style.css'
 // bootstrap icon
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+// vue-loading-overlay
+import Loading from 'vue-loading-overlay' // component
+import 'vue-loading-overlay/dist/vue-loading.css' // style
 
 import App from './App.vue'
 import router from './router'
@@ -28,6 +31,8 @@ import store from './store'
 axios.defaults.withCredentials = true
 
 Vue.config.productionTip = false
+
+Vue.component('Loading', Loading)
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)

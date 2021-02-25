@@ -52,6 +52,7 @@
                   //- b-btn(v-if="!image.edit" variant="outline-danger" @click="del(image, idx)")
                   b-btn(v-if="!image.edit" variant="outline-danger" @click="showMsgBoxTwo(image, idx)")
                     b-icon(icon="trash2")
+    loading(:active.sync="isLoading" :can-cancel="true" background-color="black" loader="dots" height="70" width="70")
 </template>
 
 <script>
@@ -63,7 +64,8 @@ export default {
       description: '',
       images: [],
       modalShow: false,
-      boxTwo: ''
+      boxTwo: '',
+      isLoading: true
     }
   },
   computed: {
@@ -233,6 +235,7 @@ export default {
     this.axios.get(process.env.VUE_APP_API + '/albums/user/' + this.user.id)
       .then(res => {
         if (res.data.success) {
+          this.isLoading = false
           // .map 把陣列的內容重新組合，再加上 edit & model
           this.images = res.data.result.map(image => {
             image.src = process.env.VUE_APP_API + '/albums/file/' + image.file
