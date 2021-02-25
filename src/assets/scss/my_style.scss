@@ -275,7 +275,7 @@ $breakpoint-xl: 1200px;
   background: url(../images/home_camera_bg.png) center/contain;
   position: relative;
   .card {
-    box-shadow: 0px 5px 5px rgba($color: $textColor, $alpha: 0.3);
+    box-shadow: 0px 5px 5px rgba($color: $textColor, $alpha: 0.1);
   }
 
   .btn_modal {
@@ -351,6 +351,15 @@ $breakpoint-xl: 1200px;
 
 #share {
   background: url(../images/home_camera_bg.png) center/contain;
+
+  #url {
+    width: 100%;
+    min-height: 38px;
+    line-height: 38px;
+    border-radius: $formRadius;
+    border: 1px solid #eee;
+    background-color: rgba($color: $textColor, $alpha: 0.1);
+  }
 
   .profile-card-4 {
     max-width: 300px;

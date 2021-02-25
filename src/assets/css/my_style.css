@@ -293,8 +293,8 @@
 }
 
 #album .card {
-  -webkit-box-shadow: 0px 5px 5px rgba(33, 37, 41, 0.3);
-          box-shadow: 0px 5px 5px rgba(33, 37, 41, 0.3);
+  -webkit-box-shadow: 0px 5px 5px rgba(33, 37, 41, 0.1);
+          box-shadow: 0px 5px 5px rgba(33, 37, 41, 0.1);
 }
 
 #album .btn_modal {
@@ -390,6 +390,15 @@
 
 #share {
   background: url(../images/home_camera_bg.png) center/contain;
+}
+
+#share #url {
+  width: 100%;
+  min-height: 38px;
+  line-height: 38px;
+  border-radius: 3px;
+  border: 1px solid #eee;
+  background-color: rgba(33, 37, 41, 0.1);
 }
 
 #share .profile-card-4 {

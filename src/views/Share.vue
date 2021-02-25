@@ -5,11 +5,11 @@
         a(href="#")
           img(src="../assets/images/arrow-up.svg")
       h1.text-center.my-3 {{ users.account }} ❜s Wo
-      div.text-center URL：
+      div#url.text-center.col-11.col-lg-7.mx-auto
         span#copythis {{ this.url + this.userId }}
         span
           b-button.btn_Share(size="md" @click="CopyTextToClipboard('copythis')")
-            b-icon(icon="files")
+            b-icon(icon="clipboard")
       hr
       Photoswipe.mt-4.mb-5
         b-row
