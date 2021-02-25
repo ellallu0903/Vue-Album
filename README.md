@@ -1,24 +1,9 @@
-# album
+### 預覽：
 
-## Project setup
-```
-npm install
-```
+![ShareWo 📷](https://i.imgur.com/xZNPo8p.png)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### DEMO：[ShareWo 📷](https://ellallu0903.github.io/vue-shareWo/#/)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 圖片來源：
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 背景圖 TW/JP/KR/TH－[🔗 Unsplash](https://unsplash.com/photos/VvE9lcIQ5Xo)
